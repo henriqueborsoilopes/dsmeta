@@ -53,17 +53,6 @@ function SalesCard() {
 
                 <div>
                     <table className="dsmeta-sales-table">
-                        <thead>
-                            <tr>
-                                <th className="show992">{sales.id}</th>
-                                <th className="show576">Data</th>
-                                <th>Vendedor</th>
-                                <th className="show992">Visitas</th>
-                                <th className="show992">Vendas</th>
-                                <th>Total</th>
-                                <th>Notificar</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             {sales.map(sale => {
                                 return (
@@ -76,7 +65,7 @@ function SalesCard() {
                                         <td>{sale.amount.toFixed(2)}</td>
                                         <td>
                                             <div className="dsmeta-red-btn-container">
-                                                <NotificationButton />
+                                                <NotificationButton saleId={sale.id}/>
                                             </div>
                                         </td>
                                     </tr>
