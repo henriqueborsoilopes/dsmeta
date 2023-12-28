@@ -1,6 +1,8 @@
 import axios from 'axios';
 import logo from '../../asset/img/notification-icon.svg';
 import './NotificationButton.css';
+import { toast } from 'react-toastify';
+import { BASE_URL } from '../../enviroment/BaseURL';
 
 interface Props {
   saleId: number;
@@ -8,11 +10,9 @@ interface Props {
 
 export const NotificationButton: React.FC<Props> = ({ saleId }) => {
   function handleClick(saleId: number) {
-    axios
-      .get(`http://localhost:8080/sales/${saleId}/notification`)
-      .then((response) => {
-        console.log('sucesso' + response.data);
-      });
+    axios.get(`${BASE_URL}/sales/${saleId}/notification`).then(() => {
+      toast.info('SMS enviado com sucesso');
+    });
   }
 
   return (
