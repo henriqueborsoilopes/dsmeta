@@ -5,6 +5,7 @@ import './SalesCard.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Sale } from '../../model/Sale';
+import { BASE_URL } from '../../enviroment/BaseURL';
 
 export const SalesCard = () => {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -18,7 +19,7 @@ export const SalesCard = () => {
     const dMin = minDate.toISOString().slice(0, 10);
     const dMax = maxDate.toISOString().slice(0, 10);
     axios
-      .get(`http://localhost:8080/sales?minDate=${dMin}&max=${dMax}`)
+      .get(`${BASE_URL}/sales?minDate=${dMin}&max=${dMax}`)
       .then((response) => {
         setSales(response.data.content);
       });
